@@ -1,9 +1,10 @@
+/* global.css */
 @import "tailwindcss";
 
 @theme {
   /* Define your custom theme variables here */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
+  --background: 0 0% 20%; /* Darker background */
+  --foreground: 0 0% 100%; /* Lighter text color */
   --card: 0 0% 100%;
   --card-foreground: 0 0% 3.9%;
   --popover: 0 0% 100%;
@@ -31,8 +32,8 @@
 
 .dark {
   /* Define your dark mode variables here */
-  --background: 0 0% 3.9%;
-  --foreground: 0 0% 98%;
+  --background: 0 0% 5%; /* Darker background */
+  --foreground: 0 0% 100%; /* Lighter text color */
   --card: 0 0% 3.9%;
   --card-foreground: 0 0% 98%;
   --popover: 0 0% 3.9%;

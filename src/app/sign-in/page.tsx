@@ -41,7 +41,7 @@ const SignIn = () => {
     });
     if (res?.ok) {
       router.push("/");
-      toast.success("login successful");
+      toast.success("Login successful");
     } else if (res?.status === 401) {
       setError("Invalid Credentials");
       setPending(false);
@@ -57,17 +57,20 @@ const SignIn = () => {
     event.preventDefault();
     signIn(value, { callbackUrl: "/" });
   };
+
   return (
-    <div className="h-full flex items-center justify-center bg-[#1b0918]">
-      <Card className="md:h-auto w-[80%] sm:w-[420px] p-4 sm:p-8">
+    <div className="h-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
+      <Card className="w-[80%] sm:w-[420px] p-4 sm:p-8 bg-white shadow-xl rounded-lg">
         <CardHeader>
-          <CardTitle className="text-center">Sign in</CardTitle>
-          <CardDescription className="text-sm text-center text-accent-foreground">
-            Use email or service, to sign in
+          <CardTitle className="text-center text-2xl font-semibold text-gray-800">
+            Sign in
+          </CardTitle>
+          <CardDescription className="text-sm text-center text-gray-500">
+            Use your email or service to sign in
           </CardDescription>
         </CardHeader>
         {!!error && (
-          <div className="bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
+          <div className="bg-red-500/20 p-3 rounded-md flex items-center gap-x-2 text-sm text-red-600 mb-6">
             <TriangleAlert />
             <p>{error}</p>
           </div>
@@ -77,53 +80,61 @@ const SignIn = () => {
             <Input
               type="email"
               disabled={pending}
-              placeholder="email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <Input
               type="password"
               disabled={pending}
-              placeholder="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
-            <Button className="w-full" size="lg" disabled={pending}>
-              continue
+            <Button
+              className="w-full py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg mt-4"
+              size="lg"
+              disabled={pending}
+            >
+              Continue
             </Button>
           </form>
 
-          <Separator />
-          <div className="flex my-2 justify-evenly mx-auto items-center">
+          <Separator className="my-4" />
+
+          <div className="flex my-2 justify-evenly items-center">
             <Button
               disabled={false}
               onClick={() => {}}
               variant="outline"
               size="lg"
-              className="bg-slate-300 hover:bg-slate-400 hover:scale-110"
+              className="bg-slate-100 hover:bg-slate-200 transition-all ease-in-out p-2 rounded-full"
             >
-              <FcGoogle className="size-8 left-2.5 top-2.5" />
+              <FcGoogle className="w-6 h-6" />
             </Button>
             <Button
               disabled={false}
               onClick={(e) => handleProvider(e, "github")}
               variant="outline"
               size="lg"
-              className="bg-slate-300 hover:bg-slate-400 hover:scale-110"
+              className="bg-slate-100 hover:bg-slate-200 transition-all ease-in-out p-2 rounded-full"
             >
-              <FaGithub className="size-8 left-2.5 top-2.5" />
+              <FaGithub className="w-6 h-6" />
             </Button>
           </div>
-          <p className="text-center text-sm mt-2 text-muted-foreground">
-            Create new account
+
+          <p className="text-center text-sm mt-2 text-gray-500">
+            Don't have an account?
             <Link
-              className="text-sky-700 ml-4 hover:underline cursor-pointer"
+              className="text-blue-600 ml-4 hover:underline cursor-pointer"
               href="sign-up"
             >
-              Sing up{" "}
+              Sign up
             </Link>
           </p>
         </CardContent>
